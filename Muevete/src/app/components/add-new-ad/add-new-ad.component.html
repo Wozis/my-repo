@@ -1,0 +1,129 @@
+<!--inputs for ad-->
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce el título:</label>
+            <input type="text" class="form-control" [(ngModel)]="titleAd">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Marca:</label>
+            <select class="form-select" [(ngModel)]="brandAd">
+                <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce el modelo:</label>
+            <input type="text" class="form-control" [(ngModel)]="modelAd">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce el precio:</label>
+            <input type="number" class="form-control" [(ngModel)]="priceAd">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce el año de fabricación:</label>
+            <select class="form-select" [(ngModel)]="yearOfProductionAd">
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce el kilometraje:</label>
+            <input type="number" class="form-control" [(ngModel)]="mileageAd">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce el consumo:</label>
+            <input type="number" class="form-control" [(ngModel)]="consumptionAd">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce la localidad:</label>
+            <select class="form-select" [(ngModel)]="locationAd">
+                <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Introduce un número de contacto:</label>
+            <input type="number" class="form-control" [(ngModel)]="phoneAd">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Venta o alquiler:</label>
+            <select class="form-select" [(ngModel)]="sellRentAd">
+                <option value="Venta">Venta</option>
+                <option value="Alquiler">Alquiler</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="mb-3">
+            <label class="form-label">Descripción general:</label>
+            <textarea class="form-control" rows="5" [(ngModel)]="descriptionAd"></textarea>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Seleccionar archivo:</label>
+            <input type="file" class="form-control" (change)="onFileChange($event)">
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="this.typeButton != true">
+    <div class="col-md-12">
+        <button class="btn btn-primary" (click)="addAdMessage()" (click)="addAd()" [disabled]="getButtonStatus()"
+            (click)="backHome()">Añadir anuncio</button>
+    </div>
+</div>
+<div class="row mt-3" *ngIf="this.typeButton != true">
+    <div class="col-md-12">
+        <p *ngIf="getButtonStatus()==false; else sinAniadir" class="text-success">{{ mensaje }}</p>
+        <ng-template #sinAniadir>
+            <p class="text-danger">Revise que todos los campos esten correctamente</p>
+        </ng-template>
+    </div>
+</div>
+<div class="row" *ngIf="this.typeButton == true">
+    <div class="col-md-12">
+        <button class="btn btn-primary" (click)="addAdMessage()" (click)="modifyAd()" [disabled]="getButtonStatus()"
+            (click)="backHome()">Editar anuncio</button>
+    </div>
+</div>
+<br>
+<div class="row" *ngIf="this.typeButton == true">
+    <div class="col-md-12">
+        <button class="btn btn-primary" (click)="addAdMessage()" (click)="adRemoved()" [disabled]="getButtonStatus()"
+            (click)="backHome()">Borrar anuncio</button>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div *ngIf="ad!=undefined" class="anuncio">
+    <p><b>Propietario:</b> {{nameUserOfAd}}</p>
+    <p><b>Título:</b> {{titleAd}}</p>
+    <p><b>Marca:</b> {{brandAd}}</p>
+    <p><b>Modelo:</b> {{modelAd}}</p>
+    <p><b>Precio:</b> {{priceAd}} €</p>
+    <p><b>Año de fabricación:</b> {{yearOfProductionAd}}</p>
+    <p><b>Localidad:</b> {{locationAd}}</p>
+    <p><b>Kilómetros:</b> {{mileageAd}} Km</p> 
+    <p><b>Consumo:</b> {{consumptionAd}} L</p>
+    <p><b>Tipo de anuncio:</b> {{sellRentAd}}</p>
+    <p><b>Número:</b> {{phoneAd}}</p>
+    <p><b>Descripción:</b> {{descriptionAd}}</p>
+    <img [src]="selectedFiles" alt="Imagen del anuncio" class="card-img-top">
+    <button *ngIf="!checkStatusFav(ad) && isLoggedIn && ad.idUser !== nameUserLogged" (click)="addFav(ad)" class="btn btn-primary">
+        <img src="../../assets/images/NoFav.png" style="height: 20px; width: 18px">
+    </button>
+    <button *ngIf="checkStatusFav(ad) && isLoggedIn && ad.idUser !== nameUserLogged" (click)="quitFav(ad)" class="btn btn-primary">
+        <img src="../../assets/images/Fav.png" style="height: 20px; width: 18px">
+    </button>
+    <button *ngIf="ad.idUser !== nameUserLogged && isLoggedIn" class="btn btn-primary" [routerLink]="['/opinionPage', ad.idAd]">Opinar sobre el vendedor</button>
+</div>

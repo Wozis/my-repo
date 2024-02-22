@@ -1,0 +1,44 @@
+<!-- Ads -->
+<div *ngIf="changeArray() || !changeArray()">
+    <div *ngIf="ads !== undefined">
+        <div *ngIf="changeArray()" style="text-align: center;"><h1>MIS FAVORITOS:</h1></div>
+        <div *ngIf="!changeArray()" style="text-align: center;"><h1>MIS ANUNCIOS:</h1></div>
+        <div *ngIf="ads.length !== 0; else sinResultados">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let ad of ads">
+                        <div [ngClass]="{
+                            'forSell': ad.sellRentAd === 'Venta',
+                            'forRent': ad.sellRentAd === 'Alquiler'
+                        }" class="card mb-3">
+                            <a>
+                                <img [src]="ad.selectedFiles" class="card-img-top" style="height: 200px; width: 100%">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ ad.titleAd }}</h4>
+                                    <p class="card-text"><strong>Marca:</strong> {{ ad.brandAd }}</p>
+                                    <p class="card-text"><strong>Modelo:</strong> {{ ad.modelAd }}</p>
+                                    <p class="card-text"><strong>Precio:</strong> {{ ad.priceAd }} €</p>
+                                    <p class="card-text"><strong>Año de fabricación:</strong> {{ ad.yearOfProductionAd }}</p>
+                                    <p class="card-text"><strong>Localidad:</strong> {{ ad.locationAd }}</p>
+                                    <button *ngIf="!checkStatusFav(ad) && acction === '1'" (click)="addFav(ad)" class="btn btn-primary">
+                                        <img src="../../assets/images/NoFav.png" style="height: 20px; width: 18px">
+                                    </button>
+                                    <button *ngIf="checkStatusFav(ad) && acction === '1'" (click)="quitFav(ad)" class="btn btn-primary">
+                                        <img src="../../assets/images/Fav.png" style="height: 20px; width: 18px">
+                                    </button>
+                                    <button class="btn btn-primary" *ngIf="acction !== '1'" [routerLink]="['/addNewAdd', ad.idAd]">Editar / Eliminar</button>
+                                    <button *ngIf="ad.idUser !== userName && isLoggedIn" class="btn btn-primary" (click)="makeOpinion(ad)">Opinar sobre el vendedor</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #sinResultados>
+        <div style="text-align: center" *ngIf="ads.length === 0">
+            <img src="../../../assets/images/no_found.png">
+        </div>
+    </ng-template>
+</div>

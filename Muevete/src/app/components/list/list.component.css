@@ -1,0 +1,21 @@
+/* for ads to sell */
+.forSell {
+    background-color: #62FFF5; /* Background color */
+    border-radius: 10px; /* Rounded edges */
+    padding: 20px; /* internal space */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shade */
+    color: #333; /* text color */
+    font-family: Arial, sans-serif; /* text font */
+    text-align: center; /* text alignment */
+}
+
+/* for ads to rent */
+.forRent {
+    background-color:#FDFF7C; /* Background color */
+    border-radius: 10px; /* Rounded edges */
+    padding: 20px; /* internal space */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shade */
+    color: #333; /* text color */
+    font-family: Arial, sans-serif; /* text font */
+    text-align: center; /* text alignment */
+}

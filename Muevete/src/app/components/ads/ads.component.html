@@ -1,0 +1,88 @@
+<!--Title-->
+<h3 style="text-align: center;">Filtros:</h3>
+
+<!-- Filters-->
+<div class="container">
+  <div class="filters row justify-content-center">
+
+    <div class="form-group col-md-3 mx-auto">
+      <label>Ciudad:</label>
+      <select id="cityFilter" class="form-control" [(ngModel)]="selectedCity">
+        <option value="Todas" [selected]="true">Todas</option>
+        <option *ngFor="let city of cities" [value]="city.city">{{ city.city }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group col-md-3 mx-auto">
+      <label>Marca:</label>
+      <select id="brandFilter" class="form-control" [(ngModel)]="selectedBrand">
+        <option value="Todas" [selected]="true">Todas</option>
+        <option *ngFor="let brand of brands" [value]="brand.brand">{{ brand.brand }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group col-md-3 mx-auto">
+      <label>Venta o Alquiler:</label>
+      <select id="mileageFilter" class="form-control" [(ngModel)]="selectedTypeAd">
+        <option value="Todos" [selected]="true">Todos</option>
+        <option value="Venta">Venta</option>
+        <option value="Alquiler">Alquiler</option>
+      </select>
+    </div>
+  
+    <div class="form-group col-md-2 mx-auto">
+      <label>Año de fabricación:</label>
+      <select id="yearFilter" class="form-control" [(ngModel)]="selectedYear">
+        <option value="Todos" [selected]="true">Todos</option>
+        <option *ngFor="let year of years" [value]="year.year">{{ year.year }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group col-md-1 mx-auto">
+      <br>
+      <button class="btn btn-primary btn-block" (click)="filterAds()">Buscar</button>
+    </div>
+  </div>
+</div>
+
+  
+  <h1 style="text-align: center;">Anuncios:</h1>
+
+<!-- Ads -->
+<div *ngIf="resultAds !== undefined">
+  <div *ngIf="resultAds.length !== 0; else sinResultados">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let ad of resultAds">
+          <div [ngClass]="{ forSell: ad.sellRentAd === 'Venta', forRent: ad.sellRentAd === 'Alquiler' }" class="card mb-3">
+            <a>
+              <img [src]="ad.selectedFiles" class="card-img-top" style="height: 200px; width: 100%">
+              <div class="card-body">
+                <h4 class="card-title">{{ ad.titleAd }}</h4>
+                <p class="card-text"><strong>Marca:</strong> {{ ad.brandAd }}</p>
+                <p class="card-text"><strong>Modelo:</strong> {{ ad.modelAd }}</p>
+                <p class="card-text"><strong>Precio:</strong> {{ ad.priceAd }} €</p>
+                <p class="card-text"><strong>Año de fabricación:</strong> {{ ad.yearOfProductionAd }}</p>
+                <p class="card-text"><strong>Localidad:</strong> {{ ad.locationAd }}</p>
+                <button *ngIf="!checkStatusFav(ad) && isLoggedIn && ad.idUser !== userName" (click)="addFav(ad)" class="btn btn-primary">
+                  <img src="../../assets/images/NoFav.png" style="height: 20px; width: 18px">
+                </button>
+                <button *ngIf="checkStatusFav(ad) && isLoggedIn && ad.idUser !== userName" (click)="quitFav(ad)" class="btn btn-primary">
+                  <img src="../../assets/images/Fav.png" style="height: 20px; width: 18px">
+                </button>
+                <button [routerLink]="['/infoAd', ad.idAd]" class="btn btn-primary">
+                  Mas Info
+                </button>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #sinResultados>
+    <div style="text-align: center" *ngIf="resultAds.length === 0">
+      <img src="../../../assets/images/no_found.png">
+    </div>
+  </ng-template>
+</div>

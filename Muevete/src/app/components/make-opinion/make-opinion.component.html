@@ -1,0 +1,29 @@
+<!-- Container para centrar el formulario -->
+<div *ngIf="ad.idUser!=undefined" class="container mt-5">
+  <!-- Tarjeta con fondo gris -->
+  <div class="card bg-light p-3" style="max-width: 600px; margin: auto;">
+    <!--inputs to opinion-->
+    <div><h4>Opinando sobre el vendedor {{ad.idUser}}</h4></div>
+    <div>Introduce un titulo:</div>
+    <input class="form-group col-md-3" type="text" [(ngModel)]="titleOpinion">
+    <div class="form-group col-md-3">
+        <label>Opinion:</label>
+        <br>
+        <textarea rows="5" cols="50" [(ngModel)]="opinionString" style="max-width: 330px; margin: auto;"></textarea>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="cityFilter">Puntuacion:</label>
+      <select id="cityFilter" class="form-control" [(ngModel)]="puntuation">
+        <option value="0" [selected]="true">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <br>
+    <!--button to send opinion-->
+    <button class="btn btn-primary" (click)="sendOpinion()" [disabled]="checkFields()">Aceptar</button>
+  </div>
+</div>

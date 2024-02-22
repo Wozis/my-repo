@@ -1,0 +1,46 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card text-center">
+        <!--LOGIN-->
+        <div class="card-header">
+            <b>LOGIN</b>
+        </div>
+        <div class="card-body">
+            <form>
+                <br>
+                <div class="form-group col-md-3">
+                    <input name="email" type="email" placeholder="Email" [(ngModel)]="user.email">
+                </div>
+                <br>
+                <div class="form-group col-md-3">
+                    <input name="password" type="password" placeholder="Password" [(ngModel)]="user.password">
+                </div>
+                <br>
+                <div>
+                    <button name="login" type="submit" class="btn btn-primary" (click)="login()" (click)="goHome()">Login</button>
+                    <button name="loginGoogle" type="submit" class="btn btn-info" (click)="loginGoogle()" (click)="goHome()">Login with Google</button>
+                </div>
+            </form>
+        </div>
+        <!--REGISTER-->
+        <div class="card-header">
+            <b>REGISTER</b>
+        </div>
+        <div class="card-body">
+            <form>
+                <br>
+                <div class="form-group col-md-3">
+                    <input name="emailRegister" type="email" placeholder="Email" [(ngModel)]="emailRegister">
+                </div>
+                <br>
+                <div class="form-group col-md-3">
+                    <input name="passwordRegister" type="password" placeholder="Password" [(ngModel)]="passwordRegister">
+                </div>
+                <p style="color: red; font-size: 70%">DEBE DE TENER MIN 6 CARÁCTERES</p>
+                <br>
+                <div>
+                    <button name="register" type="submit" class="btn btn-primary" (click)="register()" (click)="goHome()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

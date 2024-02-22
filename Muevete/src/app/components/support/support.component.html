@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="form-container">
+      <label class="custom-label">Introduce el correo:</label>
+      <input type="text" class="form-control custom-input" name="email" [(ngModel)]="email">
+  
+      <label class="custom-label">Introduce el nombre:</label>
+      <input type="text" class="form-control custom-input" name="name" [(ngModel)]="name">
+  
+      <label class="custom-label">Descripción breve del problema:</label>
+      <input type="text" class="form-control custom-input" [(ngModel)]="title">
+  
+      <div class="form-group">
+        <label class="custom-label">Cuéntanos tu problema detalladamente:</label>
+        <textarea rows="5" class="form-control custom-textarea" [(ngModel)]="description"></textarea>
+      </div>
+  
+      <button class="btn btn-primary custom-button" (click)="sendTicket()" [disabled]="checkFields()">Enviar</button>
+    </div>
+  </div>

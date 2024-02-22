@@ -1,0 +1,46 @@
+/* style of navbar */
+nav {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+  
+ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+  
+li {
+  position: relative;
+}
+  
+a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color:#FF009B;
+}
+
+a:hover {
+  background-color: #e2e2e2;
+}
+  
+ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f2f2f2;
+  padding: 0;
+  margin: 0;
+}
+  
+li:hover ul {
+  display: block;
+}
+
+.login {
+  margin-left: auto;
+}

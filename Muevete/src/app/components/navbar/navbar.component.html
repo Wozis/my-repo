@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-dark">
+  <ul>
+    <!--logo-->
+    <li><img src="../../assets/images/logo_muevete.png" style="height: 50px; width: 45px;"></li>
+    <!--home-->
+    <li><a [routerLink]="['']">Inicio</a></li>  
+    <li>
+      <!--profile, add ad, fav ads, my ads-->
+      <a [routerLink]="['/profile']" *ngIf="userLogged|async as user">Perfil</a>
+      <ul>
+        <li><a [routerLink]="['/addNewAdd']">Añadir anuncio</a></li>
+        <li><a [routerLink]="['/list', '1']">Favoritos</a></li>
+        <li><a [routerLink]="['/list', '2']">Mis Anuncios</a></li>
+      </ul>
+    </li>
+    <!--info company-->
+    <li><a [routerLink]="['/info']">Sobre Nosotros</a></li>
+    <!--suport-->
+    <li><a [routerLink]="['/support']">Soporte</a></li>
+    <!--ligin-->
+    <li><a class="login" [routerLink]="['/login']" *ngIf="!(userLogged|async)">Login</a></li>
+    <!--close sesion-->
+    <li><a class="login" (click)="closeSesion()" *ngIf="(userLogged|async)">Cerrar Sesión</a></li>
+  </ul>
+  <!--info user logged-->
+  <a class="navbar-brand" [routerLink]="['/profile']" *ngIf="userLogged|async as user">
+    <img style="border-radius: 100%" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30" class="d-inline-block align-top" alt="">
+    {{user.email}}
+  </a>
+</nav>

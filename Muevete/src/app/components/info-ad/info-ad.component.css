@@ -1,0 +1,22 @@
+.anuncio {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    max-width: 400px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    text-align: center; /* Centra el contenido dentro del contenedor */
+}
+
+.anuncio p {
+    font-size: 18px; /* Tamaño de fuente ligeramente más grande */
+    margin: 10px 0; /* Añade espacio vertical entre los párrafos */
+}
+
+.anuncio img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
